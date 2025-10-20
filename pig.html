@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pig</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <script>
+        function deleteAnimal(id) {
+            document.getElementById(id).remove();
+        }
+    </script>
+</head>
+<body>
+    <div class="container mt-4">
+        <h2 class="text-center">Pig</h2>
+
+        <input type="text" id="search" class="form-control mb-3" placeholder="Search by Animal ID" onkeyup="searchAnimal()">
+
+        <div id="animal-list">
+            <div class="d-flex justify-content-between p-2 border" id="P1234">
+                <button class="btn btn-primary rounded-pill" onclick="openAnimalDetails('P1234')">P1234 - F</button>
+                <button class="btn btn-danger btn-sm" onclick="deleteAnimal('P1234')">🗑</button>
+            </div>
+            <div class="d-flex justify-content-between p-2 border" id="P5678">
+                <button class="btn btn-primary rounded-pill" onclick="openAnimalDetails('P5678')">P5678 - M</button>
+                <button class="btn btn-danger btn-sm" onclick="deleteAnimal('P5678')">🗑</button>
+            </div>
+            <div class="d-flex justify-content-between p-2 border" id="P9101">
+                <button class="btn btn-primary rounded-pill" onclick="openAnimalDetails('P9101')">P9101 - F</button>
+                <button class="btn btn-danger btn-sm" onclick="deleteAnimal('P9101')">🗑</button>
+            </div>
+            <div class="d-flex justify-content-between p-2 border" id="P3141">
+                <button class="btn btn-primary rounded-pill" onclick="openAnimalDetails('P3141')">P3141 - M</button>
+                <button class="btn btn-danger btn-sm" onclick="deleteAnimal('P3141')">🗑</button>
+            </div>
+            <div class="d-flex justify-content-between p-2 border" id="P2718">
+                <button class="btn btn-primary rounded-pill" onclick="openAnimalDetails('P2718')">P2718 - F</button>
+                <button class="btn btn-danger btn-sm" onclick="deleteAnimal('P2718')">🗑</button>
+            </div>
+        </div>
+
+        <button class="btn btn-primary mt-3 w-100" onclick="addAnimal()">Add More Animals</button>
+        <a href="{{ url_for('category') }}" class="btn btn-secondary mt-3 w-100">⬅ Back to Category</a>
+
+    </div>
+
+    <script>
+        function searchAnimal() {
+            let input = document.getElementById("search").value.toUpperCase();
+            let animals = document.getElementById("animal-list").getElementsByTagName("div");
+
+            for (let i = 0; i < animals.length; i++) {
+                let span = animals[i].getElementsByTagName("button")[0];
+                if (span.innerHTML.toUpperCase().indexOf(input) > -1) {
+                    animals[i].style.display = "flex";
+                } else {
+                    animals[i].style.display = "none";
+                }
+            }
+        }
+
+        function addAnimal() {
+            let randomId = 'P' + Math.floor(1000 + Math.random() * 9000);
+            let gender = Math.random() > 0.5 ? 'M' : 'F';
+            let newAnimal = `<div class='d-flex justify-content-between p-2 border' id='${randomId}'>
+                <button class='btn btn-primary rounded-pill' onclick='openAnimalDetails("${randomId}")'>${randomId} - ${gender}</button>
+                <button class='btn btn-danger btn-sm' onclick='deleteAnimal("${randomId}")'>🗑</button>
+            </div>`;
+            document.getElementById("animal-list").innerHTML += newAnimal;
+        }
+
+        function openAnimalDetails(id) {
+    window.location.href = "/animal/" + id;
+        }
+    </script>
+</body>
+</html>

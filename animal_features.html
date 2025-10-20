@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Animal Features</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .ai-btn:hover {
+        background-color: #0056b3; /* darker blue */
+        color: white;
+        transform: scale(1.02);
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        .feature-box {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            background: white;
+        }
+        .form-control, select {
+            width: 100%;
+        }
+    </style>
+    <script>
+    function toggleOtherField(selectElement, inputId) {
+        var inputField = document.getElementById(inputId);
+        if (selectElement.value === "Other") {
+            inputField.style.display = "block";
+        } else {
+            inputField.style.display = "none";
+            inputField.value = "";
+        }
+    }
+
+    // Ensure "Other" fields remain visible if they have values on page load
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll("select").forEach(selectElement => {
+            var relatedInput = document.getElementById(selectElement.name + "_other");
+            if (relatedInput && selectElement.value === "Other") {
+                relatedInput.style.display = "block";
+            }
+        });
+    });
+</script>
+
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="alert alert-success text-center">
+            {{ messages[0][1] }}
+        </div>
+    {% endif %}
+    {% endwith %}
+
+    <div class="container">
+        <h2 class="text-center">Animal Features</h2>
+        <h4 class="text-center">Category: {{ category_name }}</h4>
+        <h4 class="text-center">Animal ID: {{ animal_id }}</h4>
+
+        <form method="POST">
+            <div class="feature-box">
+                <label>Date of Birth:</label>
+                <input type="date" class="form-control" name="dob" value="{{ dob }}">
+            </div>
+
+            <div class="feature-box">
+                <label>Age:</label>
+                <input type="text" class="form-control" value="{{ age }} years" readonly>
+            </div>
+
+            <div class="feature-box">
+    <label>Region:</label>
+    <input type="text" class="form-control" name="region" value="{{ region }}">
+</div>
+
+            <div class="feature-box">
+    <label>Health Tracking:</label>
+    <select class="form-control" name="health_status" onchange="toggleOtherField(this, 'health_other')">
+        <option value="UnderObservation" {% if health_status =="UnderObservation" %}selected{% endif %}>Under Observation</option>
+        <option value="Stable" {% if health_status =="Stable" %}selected{% endif %}>Stable</option>
+        <option value="CriticalCondition" {% if health_status =="CriticalCondition" %}selected{% endif %}>Critical Condition</option>
+    {% set is_other = health_status not in ['UnderObservation', 'Stable', 'CriticalCondition'] %}
+<option value="Other" {% if is_other %}selected{% endif %}>Other</option>
+ </select>
+
+    <input type="text" class="form-control" id="health_other" name="health_other" placeholder="Enter custom status"
+        value="{% if health_status not in ['UnderObservation', 'Stable', 'CriticalCondition'] %}{{ health_status }}{% endif %}"
+        style="{% if health_status not in ['UnderObservation', 'Stable', 'CriticalCondition'] %}display:block;{% else %}display:none;{% endif %}">
+</div>
+
+
+            <div class="feature-box">
+    <label>Breeding Management:</label>
+    <select class="form-control" name="breeding_status" onchange="toggleOtherField(this, 'breeding_other')">
+        <option value="ReadyforBreeding" {% if breeding_status =="ReadyforBreeding" %}selected{% endif %}>Ready for Breeding</option>
+        <option value="NotReadyforBreeding" {% if breeding_status =="NotReadyforBreeding" %}selected{% endif %}>Not Ready for Breeding</option>
+        <option value="CannotBreed" {% if breeding_status =="CannotBreed" %}selected{% endif %}>Cannot Breed</option>
+ {% set is_other = breeding_status not in ['ReadyforBreeding', 'NotReadyforBreeding', 'CannotBreed'] %}
+<option value="Other" {% if is_other %}selected{% endif %}>Other</option>
+</select>
+
+    <input type="text" class="form-control" id="breeding_other" name="breeding_other" placeholder="Enter custom status"
+        value="{% if breeding_status not in ['ReadyforBreeding', 'NotReadyforBreeding', 'CannotBreed'] %}{{ breeding_status }}{% endif %}"
+        style="{% if breeding_status not in ['ReadyforBreeding', 'NotReadyforBreeding', 'CannotBreed'] %}display:block;{% else %}display:none;{% endif %}">
+</div>
+
+
+           <div class="feature-box">
+    <label>Lifestyle:</label>
+    <select class="form-control" name="lifestyle" onchange="toggleOtherField(this, 'lifestyle_other')">
+        <option value="ActiveandGrazing" {% if lifestyle =="ActiveandGrazing" %}selected{% endif %}>Active and Grazing</option>
+        <option value="Sedentary" {% if lifestyle =="Sedentary" %}selected{% endif %}>Sedentary</option>
+        <option value="UsedforLabour" {% if lifestyle =="UsedforLabour" %}selected{% endif %}>Used for Labour</option>
+     {% set is_other = lifestyle not in ['ActiveandGrazing', 'Sedentary', 'UsedforLabour'] %}
+<option value="Other" {% if is_other %}selected{% endif %}>Other</option>
+</select>
+
+    <input type="text" class="form-control" id="lifestyle_other" name="lifestyle_other" placeholder="Enter custom lifestyle"
+        value="{% if lifestyle not in ['ActiveandGrazing', 'Sedentary', 'UsedforLabour'] %}{{ lifestyle }}{% endif %}"
+        style="{% if lifestyle not in ['ActiveandGrazing', 'Sedentary', 'UsedforLabour'] %}display:block;{% else %}display:none;{% endif %}">
+</div>
+
+
+<div class="feature-box">
+    <label>Previous Disease History:</label>
+    <input type="text" class="form-control" name="prev_disease_history" value="{{ prev_disease_history }}">
+</div>
+
+
+            <div class="feature-box">
+                <label>Last Vaccination Date:</label>
+                <input type="date" class="form-control" name="last_vaccine_date" value="{{ vaccination.last_vaccine_date }}">
+            </div>
+
+            <div class="feature-box">
+                <label>Next Due Date:</label>
+                <input type="date" class="form-control" name="next_due_date" value="{{ vaccination.next_due_date }}">
+            </div>
+
+            <div class="feature-box">
+                <label>Vaccine Status:</label>
+                <select class="form-control" name="vaccine_status">
+                    <option value="Pending" {% if vaccination.status =='Pending' %}selected{% endif %}>Pending</option>
+                    <option value="Completed" {% if vaccination.status =='Completed' %}selected{% endif %}>Completed</option>
+                </select>
+            </div>
+
+            <div class="feature-box">
+    <label>Reports:</label>
+    <select class="form-control" name="report_status" onchange="toggleOtherField(this, 'report_other')">
+        <option value="RequiresMedicalAttention" {% if report_status =="RequiresMedicalAttention" %}selected{% endif %}>Requires Medical Attention</option>
+        <option value="LethargicBehavior" {% if report_status =="LethargicBehavior" %}selected{% endif %}>Lethargic Behavior</option>
+        <option value="IrregularEatingHabits" {% if report_status =="IrregularEatingHabits" %}selected{% endif %}>Irregular Eating Habits</option>
+        <option value="ActiveandEnergetic" {% if report_status =="ActiveandEnergetic" %}selected{% endif %}>Active and Energetic</option>
+    {% set is_other = report_status not in ['RequiresMedicalAttention', 'LethargicBehavior', 'IrregularEatingHabits', 'ActiveandEnergetic'] %}
+<option value="Other" {% if is_other %}selected{% endif %}>Other</option>
+</select>
+
+    <input type="text" class="form-control" id="report_other" name="report_other" placeholder="Enter custom report"
+        value="{% if report_status not in ['RequiresMedicalAttention', 'LethargicBehavior', 'IrregularEatingHabits', 'ActiveandEnergetic'] %}{{ report_status }}{% endif %}"
+        style="{% if report_status not in ['RequiresMedicalAttention', 'LethargicBehavior', 'IrregularEatingHabits', 'ActiveandEnergetic'] %}display:block;{% else %}display:none;{% endif %}">
+</div>
+
+            <div class="feature-box">
+    <label>Environmental Risk:</label>
+    <select class="form-control" name="environmental_risk">
+        <option value="Low" {% if environmental_risk =='Low' %}selected{% endif %}>Low</option>
+        <option value="Medium" {% if environmental_risk =='Medium' %}selected{% endif %}>Medium</option>
+        <option value="High" {% if environmental_risk =='High' %}selected{% endif %}>High</option>
+    </select>
+</div>
+<!--&lt;!&ndash; Upload Document Form &ndash;&gt;-->
+<!--<form method="POST" action="{{ url_for('upload_document', animal_id=animal_id) }}" enctype="multipart/form-data" class="mt-4">-->
+<!--    <div class="feature-box">-->
+<!--        <label>Upload Document (PDF, JPG, PNG only):</label>-->
+<!--        <input type="file" name="document" class="form-control mb-2" accept=".pdf,.jpg,.jpeg,.png" required>-->
+
+<!--        {% if document_filename %}-->
+<!--        <div class="mt-2">-->
+<!--            <p>Uploaded Document:-->
+<!--                <a href="{{ url_for('static', filename='uploads/' ~ document_filename) }}" target="_blank">-->
+<!--                    {{ document_filename }}-->
+<!--                </a>-->
+<!--            </p>-->
+<!--        </div>-->
+<!--        {% endif %}-->
+
+<!--        <button type="submit" class="btn btn-warning w-100">Upload Document</button>-->
+<!--    </div>-->
+<!--</form>-->
+            <div class="feature-box">
+                <label>Temperature:</label>
+                <input type="number" step="0.1" class="form-control" name="temperature" value="{{ temperature }}">
+            </div>
+
+                <button type="submit" name="action" value="save" class="btn btn-success mt-3 w-100">Save Changes</button>
+                <button type="submit" name="action" value="ai" class="btn btn-info mt-3 w-100">Get AI Recommendation</button>
+
+        </form>
+                            <!-- Document Upload -->
+        <form method="POST" action="{{ url_for('upload_document', animal_id=animal_id) }}" enctype="multipart/form-data">
+            <div class="feature-box">
+                <label>Upload Document (PDF/JPG/PNG):</label>
+                <input type="file" name="document" class="form-control" accept=".pdf,.jpg,.jpeg,.png">
+                {% if document_filename %}
+                <p class="mt-2">Uploaded Document:
+                    <a href="{{ url_for('static', filename='uploads/' ~ document_filename) }}" target="_blank">
+                        {{ document_filename }}
+                    </a>
+                </p>
+                {% endif %}
+                <button type="submit" class="btn btn-warning w-100 mt-2">Upload Document</button>
+            </div>
+        </form>
+
+
+        {% if ai_recommendation %}
+    <div class="card mt-4 p-3 text-center shadow-sm" style="background-color: #e3f2fd;">
+        <h5 class="text-primary">AI Recommendation</h5>
+        <p class="mb-0 fw-bold">{{ ai_recommendation }}</p>
+    </div>
+{% endif %}
+
+
+        <a href="{{ url_for('category') }}" class="btn btn-primary mt-3 w-100">Back to Categories</a>
+
+    </div>
+</body>
+</html>
