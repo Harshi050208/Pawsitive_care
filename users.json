@@ -1,0 +1,14 @@
+{
+    "admin": {
+        "password": "password",
+        "type": "admin"
+    },
+    "user": {
+        "password": "12345",
+        "type": "user"
+    },
+    "abc": {
+        "password": "123456789",
+        "type": "user"
+    }
+}

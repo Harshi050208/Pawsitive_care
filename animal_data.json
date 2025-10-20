@@ -1,0 +1,286 @@
+{
+    "C1234": {
+        "dob": "2021-02-22",
+        "health_status": "Other",
+        "breeding_status": "Other",
+        "lifestyle": "Other",
+        "report_status": "Other",
+        "temperature": 38.5,
+        "vaccination": {
+            "last_vaccine_date": "",
+            "next_due_date": "",
+            "status": "Completed"
+        },
+        "custom_fields": {},
+        "region": "",
+        "prev_disease_history": "",
+        "environmental_risk": "Low"
+    },
+    "C3141": {
+        "dob": "2006-02-05",
+        "health_status": "Unknown",
+        "breeding_status": "Unknown",
+        "lifestyle": "Unknown",
+        "report_status": "Unknown",
+        "temperature": 0.0,
+        "vaccination": {
+            "last_vaccine_date": "",
+            "next_due_date": "",
+            "status": "Pending"
+        }
+    },
+    "P2718": {
+        "dob": "Unknown",
+        "health_status": "Unknown",
+        "breeding_status": "Unknown",
+        "lifestyle": "Unknown",
+        "report_status": "Unknown",
+        "temperature": 0.0,
+        "vaccination": {
+            "last_vaccine_date": "Not Recorded",
+            "next_due_date": "Not Recorded",
+            "status": "Pending"
+        }
+    },
+    "P1234": {
+        "dob": "Unknown",
+        "health_status": "Unknown",
+        "breeding_status": "Unknown",
+        "lifestyle": "Unknown",
+        "report_status": "Unknown",
+        "temperature": 0.0,
+        "vaccination": {
+            "last_vaccine_date": "Not Recorded",
+            "next_due_date": "Not Recorded",
+            "status": "Pending"
+        }
+    },
+    "H5678": {
+        "dob": "Unknown",
+        "health_status": "Unknown",
+        "breeding_status": "Unknown",
+        "lifestyle": "Unknown",
+        "report_status": "Unknown",
+        "temperature": 0.0,
+        "vaccination": {
+            "last_vaccine_date": "Not Recorded",
+            "next_due_date": "Not Recorded",
+            "status": "Pending"
+        }
+    },
+    "C5678": {
+        "dob": "2021-06-15",
+        "health_status": "UnderObservation",
+        "breeding_status": "CannotBreed",
+        "lifestyle": "Sedentary",
+        "report_status": "ActiveandEnergetic",
+        "temperature": 34.0,
+        "vaccination": {
+            "last_vaccine_date": "2025-03-05",
+            "next_due_date": "2025-04-05",
+            "status": "Completed"
+        },
+        "custom_fields": {},
+        "region": "",
+        "prev_disease_history": "None",
+        "environmental_risk": "Low"
+    },
+    "C3700": {
+        "dob": "Unknown",
+        "health_status": "Unknown",
+        "breeding_status": "Unknown",
+        "lifestyle": "Unknown",
+        "report_status": "Unknown",
+        "temperature": 0.0,
+        "vaccination": {
+            "last_vaccine_date": "Not Recorded",
+            "next_due_date": "Not Recorded",
+            "status": "Pending"
+        }
+    },
+    "C2058": {
+        "dob": "2025-03-27",
+        "health_status": "Unknown",
+        "breeding_status": "Unknown",
+        "lifestyle": "Unknown",
+        "report_status": "Unknown",
+        "temperature": 0.0,
+        "vaccination": {
+            "last_vaccine_date": "2025-03-10",
+            "next_due_date": "2025-04-05",
+            "status": "Pending"
+        }
+    },
+    "C2718": {
+        "dob": "2016-06-21",
+        "health_status": "good condition",
+        "breeding_status": "ongoing",
+        "lifestyle": "good",
+        "report_status": "positive",
+        "temperature": 38.2,
+        "vaccination": {
+            "last_vaccine_date": "2025-03-04",
+            "next_due_date": "2025-04-05",
+            "status": "Pending"
+        },
+        "region": "",
+        "prev_disease_history": "",
+        "environmental_risk": "Low"
+    },
+    "C9101": {
+        "dob": "2023-06-13",
+        "health_status": "",
+        "breeding_status": "",
+        "lifestyle": "",
+        "report_status": "",
+        "temperature": 38.2,
+        "vaccination": {
+            "last_vaccine_date": "2025-02-23",
+            "next_due_date": "2025-04-05",
+            "status": "Pending"
+        },
+        "region": "",
+        "prev_disease_history": "",
+        "environmental_risk": "Low"
+    },
+    "dynamic_options": {
+        "health_status": [
+            "Under Observation",
+            "Stable",
+            "Critical Condition"
+        ],
+        "breeding_status": [
+            "Ready for Breeding",
+            "Not Ready for Breeding",
+            "Cannot Breed"
+        ],
+        "lifestyle": [
+            "Active and Grazing",
+            "Sedentary",
+            "Used for Labour",
+            "UsedforLabour",
+            "good",
+            "Unknown",
+            "Other"
+        ],
+        "report_status": [
+            "Requires Medical Attention",
+            "Lethargic Behavior",
+            "Irregular Eating Habits",
+            "Active and Energetic"
+        ]
+    },
+    "P3141": {
+        "dob": "",
+        "health_status": "Stable",
+        "breeding_status": "CannotBreed",
+        "lifestyle": "UsedforLabour",
+        "report_status": "IrregularEatingHabits",
+        "temperature": 0.0,
+        "vaccination": {
+            "last_vaccine_date": "",
+            "next_due_date": "",
+            "status": "Pending"
+        },
+        "custom_inputs": {}
+    },
+    "P9101": {
+        "dob": "Unknown",
+        "health_status": "Unknown",
+        "breeding_status": "Unknown",
+        "lifestyle": "Unknown",
+        "report_status": "Unknown",
+        "temperature": 0.0,
+        "vaccination": {
+            "last_vaccine_date": "Not Recorded",
+            "next_due_date": "Not Recorded",
+            "status": "Pending"
+        },
+        "custom_inputs": {}
+    },
+    "C5713": {
+        "dob": "Unknown",
+        "health_status": "Unknown",
+        "breeding_status": "Unknown",
+        "region": "Unknown",
+        "prev_disease_history": "None",
+        "environmental_risk": "Low",
+        "lifestyle": "Unknown",
+        "report_status": "Unknown",
+        "temperature": 0.0,
+        "vaccination": {
+            "last_vaccine_date": "Not Recorded",
+            "next_due_date": "Not Recorded",
+            "status": "Pending"
+        },
+        "custom_inputs": {}
+    },
+    "C1986": {
+        "dob": "2024-06-02",
+        "health_status": "hello",
+        "breeding_status": "NONE",
+        "region": "Maharashtra",
+        "prev_disease_history": "None",
+        "environmental_risk": "Low",
+        "lifestyle": "Sedentary",
+        "report_status": "LethargicBehavior",
+        "temperature": 0.0,
+        "vaccination": {
+            "last_vaccine_date": "2024-07-25",
+            "next_due_date": "2025-06-30",
+            "status": "Pending"
+        },
+        "custom_inputs": {}
+    },
+    "C6640": {
+        "dob": "Unknown",
+        "health_status": "Unknown",
+        "breeding_status": "Unknown",
+        "region": "Unknown",
+        "prev_disease_history": "None",
+        "environmental_risk": "Low",
+        "lifestyle": "Unknown",
+        "report_status": "Unknown",
+        "temperature": 0.0,
+        "vaccination": {
+            "last_vaccine_date": "Not Recorded",
+            "next_due_date": "Not Recorded",
+            "status": "Pending"
+        },
+        "custom_inputs": {}
+    },
+    "C9868": {
+        "dob": "Unknown",
+        "health_status": "Unknown",
+        "breeding_status": "Unknown",
+        "region": "Unknown",
+        "prev_disease_history": "None",
+        "environmental_risk": "Low",
+        "lifestyle": "Unknown",
+        "report_status": "Unknown",
+        "temperature": 36.0,
+        "vaccination": {
+            "last_vaccine_date": "Not Recorded",
+            "next_due_date": "Not Recorded",
+            "status": "Pending"
+        },
+        "custom_inputs": {}
+    },
+    "C8857": {
+        "dob": "Unknown",
+        "health_status": "Unknown",
+        "breeding_status": "Unknown",
+        "region": "Unknown",
+        "prev_disease_history": "None",
+        "environmental_risk": "Low",
+        "lifestyle": "Unknown",
+        "report_status": "Unknown",
+        "temperature": 36.0,
+        "vaccination": {
+            "last_vaccine_date": "Not Recorded",
+            "next_due_date": "Not Recorded",
+            "status": "Pending"
+        },
+        "custom_inputs": {}
+    }
+}
